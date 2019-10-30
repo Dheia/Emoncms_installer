@@ -1,6 +1,6 @@
 # NodeRED Install Script
 ## Introduction
-This built script install 
+This built script install:
 - NodeRED core
 - Node.js
 - node-red-node-wemo
