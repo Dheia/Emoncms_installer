@@ -4,4 +4,5 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/mast
 echo $?
 if [ $? == 0 ]; then
 echo "Se instalo nodered"
+fi
 # sudo systemctl enable nodered.service
