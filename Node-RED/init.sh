@@ -9,5 +9,6 @@ if [ $? == 0 ]; then
   npm install node-red-node-emoncms
   npm install node-red-contrib-mi-devices
   npm install node-red-contrib-pid
+  sudo service nodered restart
 fi
 
