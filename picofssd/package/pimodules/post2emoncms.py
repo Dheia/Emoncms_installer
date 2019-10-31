@@ -29,12 +29,12 @@ def post_data_emoncms():
 		data[1]=str(float(CPU_temp)/1000)
 
 		# data[2] Porcentaje de utilizacion de la CPU
-		p1=subprocess.Popen(['top','-b','-n','1'],stdout=subprocess.PIPE)
+		p1=subprocess.Popen(['top','-b','-n','2'],stdout=subprocess.PIPE)
 		p2=subprocess.Popen(['grep','Cpu(s)'],stdin=p1.stdout,stdout=subprocess.PIPE)
 		p1.stdout.close()
 		p3=subprocess.Popen(['sed',r's/.*, *\([0-9.]*\)%* id.*/\1/'],stdin=p2.stdout,stdout=subprocess.PIPE)
 		p2.stdout.close()
-		data[2]=str(100-float(p3.communicate()[0].strip()))
+		data[2]=str(100-float(p3.communicate()[0].split("\n")[1].strip()))
 
 		# data[3] Tiempo que lleva encendido el RPi
 		p1=subprocess.Popen(['top','-b','-n','1'],stdout=subprocess.PIPE)
