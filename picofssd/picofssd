@@ -19,7 +19,6 @@ import socket
 import RPi.GPIO as GPIO
 
 from pimodules.daemon import Daemon
-from pimodules.alerts import sendEmail
 from pimodules import configuration
 from pimodules.post2emoncms import post_data_emoncms
 
