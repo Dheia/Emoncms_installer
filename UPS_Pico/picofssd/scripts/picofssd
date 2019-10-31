@@ -113,6 +113,7 @@ class fssd(Daemon):
 		self.setup()
 
 		while True:
+			self.send_data_emoncms()
 			time.sleep(5)
 
 
