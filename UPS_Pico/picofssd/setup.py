@@ -35,6 +35,6 @@ setup(name='picofssd',
       url='http://pimodules.com',
       platforms=['POSIX'],
       classifiers = filter(None, classifiers.split("\n")),
-      scripts=['scripts/picofssd', 'scripts/picofssdxmlconfig'],
+      scripts=['scripts/picofssd'],
       data_files = datafiles
       )
