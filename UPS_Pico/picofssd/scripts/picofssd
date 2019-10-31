@@ -74,7 +74,6 @@ class fssd(Daemon):
 			# pin is low, this is shutdown signal from pico
 			self.counter += 1
 			self.log.warning("Lost power supply, Pi will shutdown")
-			self.alert_email()
 			time.sleep(2)
 			os.system('/sbin/shutdown -h now')
 		else:
