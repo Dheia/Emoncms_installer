@@ -12,7 +12,6 @@ import time
 import logging
 import logging.handlers
 import argparse
-import xmltodict
 import socket
 import RPi.GPIO as GPIO
 
@@ -33,9 +32,6 @@ class fssd(Daemon):
 		formatter = logging.Formatter('%(module)s[%(process)s]: <%(levelname)s>: %(message)s')
 		handler.setFormatter(formatter)
 		self.log.addHandler(handler)
-
-		self.config = self.config['root']['fssd:config']['fssd:alerts']['fssd:email']
-		self.config['fssd:enabled'] = (self.config['fssd:enabled'] == 'True')
 
 		signal.signal(signal.SIGTERM, self.sigcatch)
 
@@ -104,22 +100,6 @@ class fssd(Daemon):
 		self.log.info("Stopped")
 		GPIO.cleanup()
 
-	def alert_email(self):
-		#emailserver, username, port, security, fromAddr, toAddr, b64Password, msgSubjectTemplate, msgBodyTemplate
-		try:
-			if not self.config['fssd:enabled']:
-				self.log.debug("Email alert is disabled")
-				return True
-
-			sendEmail(self.config['fssd:server'], self.config['fssd:username'], self.config['fssd:port'], self.config['fssd:security'],
-					self.config['fssd:sender-email-address'], self.config['fssd:recipient-email-address'],
-					self.config['fssd:sender-password'], self.config['fssd:subject-template'],
-					self.config['fssd:body-template'])
-		except socket.error as e:
-			self.log.error(format("Exception in alert_email: %d, %s" % (e.errno, e.strerror)))
-		except:
-			self.log.error("Unexpected error in alert_email:", sys.exc_info()[0])
-
 
 	def run(self):
 		"""
@@ -127,11 +107,6 @@ class fssd(Daemon):
 		"""
 
 		self.log.info("Started")
-		self.log.debug(self.config['fssd:enabled'])
-		self.log.debug(self.config['fssd:server'])
-		self.log.debug(self.config['fssd:username'])
-		self.log.debug(self.config['fssd:sender-email-address'])
-		self.log.debug(self.config['fssd:recipient-email-address'])
 
 		# register function to cleanup at exit
 		atexit.register(self.cleanup)
