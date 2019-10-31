@@ -1,0 +1,5 @@
+# Defaults file
+
+PIDFILE=/var/run/picofssd.pid
+LOGLEVEL=info
+VERBOSE=no
