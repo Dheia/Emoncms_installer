@@ -27,5 +27,5 @@ setup(name='pimodules',
       url='http://pimodules.com',
       platforms=['POSIX'],
       classifiers = filter(None, classifiers.split("\n")),
-      packages=['pimodules'],
+      packages=['pimodules2'],
       )
