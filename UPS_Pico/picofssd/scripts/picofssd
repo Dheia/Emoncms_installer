@@ -16,6 +16,7 @@ import socket
 import RPi.GPIO as GPIO
 
 from pimodules.daemon import Daemon
+from pimodules.post2emoncms  import post_data_emoncms
 
 CLOCK_PIN = 27
 PULSE_PIN = 22
@@ -113,8 +114,8 @@ class fssd(Daemon):
 		self.setup()
 
 		while True:
-			self.send_data_emoncms()
-			time.sleep(5)
+			self.post_data_emoncms()
+			time.sleep(1)
 
 
 
