@@ -3,7 +3,6 @@
 user=$USER
 openenergymonitor_dir=/opt/openenergymonitor_mod
 
-sudo apt-get update -y
 sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
@@ -45,7 +44,7 @@ while true; do
       exit
     fi
 done
-rm init.sh
+sudo rm init.sh
 
 #sudo chmod +x init.sh && ./init.sh
 #cd UPS_Pico
