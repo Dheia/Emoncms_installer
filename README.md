@@ -1,6 +1,8 @@
 # Emoncms-Scripts
+```shell
 wget https://raw.githubusercontent.com/jatg81/Emoncms_Scripts/master/init.sh
 chmod +x init.sh && ./init.sh
+```
 
 **usb_hdd**: script modificado para crear una particion en el disco duro de 100GB de tamaño para luego mover la particion localizada en la microsd al disco duro, finalmente modifica el boot para el arranque desde el HDD.
 
