@@ -15,11 +15,13 @@ git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
 git checkout master
 
-OPTION=$(whiptail --title "Test Menu Dialog" --menu "Choose your option" 15 60 4 \
-"1" "Grilled Spicy Sausage" \
-"2" "Grilled Halloumi Cheese" \
-"3" "Charcoaled Chicken Wings" \
-"4" "Fried Aubergine"  3>&1 1>&2 2>&3)
+OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 6 \
+"1" "Install UPSPico" \
+"2" "Install NodeRed" \
+"3" "Install HDD usb" \
+"4" "Install PageKite" \
+"5" "Install Backup_mod" \
+"6" "WinSCP root access"  3>&1 1>&2 2>&3)
  
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
@@ -29,8 +31,5 @@ else
 fi
 
 #sudo chmod +x init.sh && ./init.sh
-
-#/main.sh
-
 #cd UPS_Pico
 #sudo chmod +x init.sh && ./init.sh
