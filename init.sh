@@ -1,5 +1,5 @@
 #!/bin/bash
-echo $pwd
+echo $PATH
 user=$USER
 openenergymonitor_dir=/opt/openenergymonitor_mod
 
