@@ -99,7 +99,13 @@ class fssd(Daemon):
 		self.log.debug("Cleanup")
 		self.log.info("Stopped")
 		GPIO.cleanup()
-
+	
+	def send_data_emoncms (self):
+        #Send data to emoncms through HTTP POST method
+		try:
+			post_data_emoncms()
+		except Exception as e:
+			self.log.error(e)	
 
 	def run(self):
 		"""
@@ -114,7 +120,7 @@ class fssd(Daemon):
 		self.setup()
 
 		while True:
-			self.post_data_emoncms()
+			self.send_data_emoncms()
 			time.sleep(1)
 
 
@@ -131,3 +137,4 @@ sd = fssd(args.pid_file, {'info':logging.INFO, 'debug':logging.DEBUG}[args.log_l
 
 # the argument to the start method is opposite of debug
 sd.start(not args.debug)
+
