@@ -5,4 +5,4 @@ sudo python setup.py install
 cd ../picofssd
 sudo python setup.py install
 sudo update-rc.d picofssd defaults
-sudo update-rc.d picofssd enable
+#sudo update-rc.d picofssd enable
