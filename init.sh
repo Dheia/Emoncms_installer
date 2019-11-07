@@ -15,20 +15,35 @@ git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
 git checkout master
 
-OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 6 \
-"1" "Install UPSPico" \
-"2" "Install NodeRed" \
-"3" "Install HDD usb" \
-"4" "Install PageKite" \
-"5" "Install Backup_mod" \
-"6" "WinSCP root access"  3>&1 1>&2 2>&3)
- 
-exitstatus=$?
-if [ $exitstatus = 0 ]; then
-    echo "Your chosen option:" $OPTION
-else
-    echo "You chose Cancel."
-fi
+while true; do      
+  OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 6 \
+    "1" "Install UPSPico" \
+    "2" "Install NodeRed" \
+    "3" "Install HDD usb" \
+    "4" "Install PageKite" \
+    "5" "Install Backup_mod" \
+    "6" "WinSCP root access"  3>&1 1>&2 2>&3)
+    exitstatus=$?
+    if [ $exitstatus = 0 ]; then
+      case $OPTION in
+        1)
+            echo "Option 1"
+            whiptail --title "Option 1" --msgbox "You chose option 1. Exit status $?" 8 45
+        ;;
+        2)
+            echo "Option 2"
+            whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
+        ;;
+        3)
+            echo "Option 3"
+            whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
+        ;;
+      esac
+    else
+      exit
+    fi
+done
+
 
 #sudo chmod +x init.sh && ./init.sh
 #cd UPS_Pico
