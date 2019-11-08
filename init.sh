@@ -49,7 +49,8 @@ while true; do
       exit
     fi
 done
-sudo rm init.sh
+cd
+rm init.sh
 
 #sudo chmod +x init.sh && ./init.sh
 #cd UPS_Pico
