@@ -34,7 +34,7 @@ while true; do
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
-        1)
+        1)  echo $PATH
             echo "Option 1"
             whiptail --title "Option 1" --msgbox "You chose option 1. Exit status $?" 8 45
         ;;
