@@ -17,7 +17,7 @@ sudo chown $user $openenergymonitor_dir
 cd $openenergymonitor_dir
 
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
-sudo git clone https://github.com/jatg81/Emoncms-Scripts.git
+git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
 git checkout master
 cd
