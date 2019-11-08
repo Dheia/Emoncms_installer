@@ -50,6 +50,7 @@ while true; do
     fi
 done
 cd
+dir
 sudo rm init.sh
 
 #sudo chmod +x init.sh && ./init.sh
