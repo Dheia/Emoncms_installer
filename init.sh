@@ -51,6 +51,7 @@ while true; do
 done
 cd
 dir
+echo "Heysss"
 sudo rm init.sh
 
 #sudo chmod +x init.sh && ./init.sh
