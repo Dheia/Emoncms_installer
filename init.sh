@@ -41,8 +41,10 @@ while true; do
             #whiptail --title "Option 1" --msgbox "You chose option 1. Exit status $?" 8 45
         ;;
         2)
-            echo "Option 2"
-            whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
+            cd $openenergymonitor_dir/Emoncms-Scripts/Node-RED
+            sudo chmod +x init.sh && ./init.sh
+            #echo "Option 2"
+            #whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
         ;;
         3)
             echo "Option 3"
