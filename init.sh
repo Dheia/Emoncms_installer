@@ -34,8 +34,8 @@ while true; do
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
-        1)  
-            cd openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
+        1)  echo $openenergymonitor_dir
+            cd $openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
             sudo chmod +x init.sh && ./init.sh
             #echo "Option 1"
             #whiptail --title "Option 1" --msgbox "You chose option 1. Exit status $?" 8 45
