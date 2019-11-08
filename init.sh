@@ -1,6 +1,5 @@
 #!/bin/bash
 
-su pi
 user=$USER
 openenergymonitor_dir=/opt/openenergymonitor_mod
 
