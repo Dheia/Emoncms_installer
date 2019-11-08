@@ -34,7 +34,7 @@ while true; do
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
-        1)  echo $openenergymonitor_dir
+        1)  
             cd $openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
             sudo chmod +x init.sh && ./init.sh
             #echo "Option 1"
