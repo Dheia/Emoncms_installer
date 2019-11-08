@@ -20,6 +20,8 @@ echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 sudo git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
 git checkout master
+cd
+sudo rm init.sh
 
 while true; do      
   OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 6 \
@@ -49,11 +51,6 @@ while true; do
       exit
     fi
 done
-cd
-dir
-echo "Heysss"
-sudo rm init.sh
-
 #sudo chmod +x init.sh && ./init.sh
 #cd UPS_Pico
 #sudo chmod +x init.sh && ./init.sh
