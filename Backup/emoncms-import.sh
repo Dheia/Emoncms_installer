@@ -125,7 +125,9 @@ echo "==========================================================================
 echo "    $(date)"  
 echo "    Import time: $(($duration / 60)) min $(($duration % 60)) sec"
 echo "    Backup imported: $backup_filename"  
-echo "    Import finished...refresh page to view download link" 
-echo "============================ Emoncms import complete! ===================================" 
+echo "    Import finished...refresh page to view download link"
+echo "=========================================================================================" 
+echo " "
+echo "=== Emoncms import complete! ===" 
 # The last line is identified in the interface to stop ongoing AJAX calls, please ammend in interface if changed here
 sudo service apache2 restart
