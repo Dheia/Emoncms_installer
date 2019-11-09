@@ -30,7 +30,7 @@ while true; do
     "3" "Install HDD usb" \
     "4" "Install PageKite" \
     "5" "Install Backup_mod" \
-    "6" "SSH root access"  3>&1 1>&2 2>&3)
+    "6" "Enable SSH root access"  3>&1 1>&2 2>&3)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
