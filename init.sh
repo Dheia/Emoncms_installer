@@ -37,21 +37,27 @@ while true; do
         1)  
             cd $openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
             sudo chmod +x init.sh && ./init.sh
-            #echo "Option 1"
-            #whiptail --title "Option 1" --msgbox "You chose option 1. Exit status $?" 8 45
         ;;
         2)
             cd $openenergymonitor_dir/Emoncms-Scripts/Node-RED
             sudo chmod +x init.sh && ./init.sh
-            #echo "Option 2"
-            #whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
         ;;
         3)
             cd $openenergymonitor_dir/Emoncms-Scripts/USB_HDD
             sudo chmod +x usb_hdd
             sudo  ./usb_hdd -d /dev/sda
-            #echo "Option 3"
-            #whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
+        ;;
+        4)
+            cd $openenergymonitor_dir/Emoncms-Scripts/USB_HDD
+            sudo chmod +x usb_hdd
+        ;;
+        5)
+            cd $openenergymonitor_dir/Emoncms-Scripts/Pagekite
+            sudo chmod +x init.sh
+        ;;
+        6)
+            cd $openenergymonitor_dir/Emoncms-Scripts/SSH_root
+            sudo chmod +x init.sh
         ;;
       esac
     else
