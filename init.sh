@@ -48,16 +48,16 @@ while true; do
             sudo  ./usb_hdd -d /dev/sda
         ;;
         4)
-            cd $openenergymonitor_dir/Emoncms-Scripts/USB_HDD
-            sudo chmod +x usb_hdd
+            cd $openenergymonitor_dir/Emoncms-Scripts/Pagekite
+            sudo chmod +x init.sh && ./init.sh
         ;;
         5)
-            cd $openenergymonitor_dir/Emoncms-Scripts/Pagekite
-            sudo chmod +x init.sh
+            cd $openenergymonitor_dir/Emoncms-Scripts/Backup
+            sudo chmod +x init.sh && ./init.sh
         ;;
         6)
             cd $openenergymonitor_dir/Emoncms-Scripts/SSH_root
-            sudo chmod +x init.sh
+            sudo chmod +x init.sh && ./init.sh
         ;;
       esac
     else
