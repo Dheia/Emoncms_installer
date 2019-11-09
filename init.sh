@@ -50,8 +50,8 @@ while true; do
             cd $openenergymonitor_dir/Emoncms-Scripts/USB_HDD
             sudo chmod +x usb_hdd
             sudo  ./usb_hdd -d /dev/sda
-            echo "Option 3"
-            whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
+            #echo "Option 3"
+            #whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
         ;;
       esac
     else
