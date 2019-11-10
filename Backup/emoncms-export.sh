@@ -1,14 +1,17 @@
 #!/bin/bash
 date=$(date +"%Y-%m-%d")
 SECONDS=0
+config_file="/opt/emon/modules/backup/config.cfg"
+nodered_path="/home/pi/.node-red"
+nas_mount="/media/Emoncms_backup_diario"
 
 echo "========================= Emoncms export start =========================================="
 date
 echo "This export script has been modified by jatg"
 echo ""
-if [ -f /opt/emon/modules/backup/config.cfg ]
+if [ -f $config_file ]
 then
-    source /opt/emon/modules/backup/config.cfg
+    source $config_file
     log="$backup_location/emoncms-export.log"
     exec 1>>$log
     echo "Log file: $log"
@@ -17,10 +20,10 @@ then
     echo "Location of emonhub.conf:   $emonhub_config_path"
     echo "Location of Emoncms:        $emoncms_location"
     echo "Location of Node Red:       $nodered_path"
-    echo "Backup destinations:        $backup_location/export & $backup_location2"
+    echo "Backup destinations:        $backup_location/export & $nas_mount"
     echo "-----------------------------------------------------------------------------------------"
 else
-    echo "ERROR: Backup /opt/emon/modules/backup/config.cfg file does not exist"
+    echo "ERROR: Backup $config_file file does not exist"
     exit 1
 fi
 
@@ -135,7 +138,7 @@ fi
 echo "- Deleting temporary folder"
 rm -r $backup_location/export/temp
 rm $bkp_tar
-sudo cp $backup_location/export/emoncms-backup-$date.tar.gz $backup_location2
+sudo cp $backup_location/export/emoncms-backup-$date.tar.gz $$nas_mount
 rm $backup_location/export/emoncms-backup-$date.tar.gz
 
 duration=$SECONDS
@@ -143,8 +146,8 @@ echo ""
 echo "=========================================================================================" 
 echo "    $(date)"  
 echo "    Export time: $(($duration / 60)) min $(($duration % 60)) sec"
-echo "    Backup saved: $backup_location2/emoncms-backup-$date.tar.gz" 
-echo "    Size: $(( $( stat -c '%s' $backup_location2/emoncms-backup-$date.tar.gz ) / 1024 / 1024 )) MB" 
+echo "    Backup saved: $nas_mount/emoncms-backup-$date.tar.gz" 
+echo "    Size: $(( $( stat -c '%s' $nas_mount/emoncms-backup-$date.tar.gz ) / 1024 / 1024 )) MB" 
 echo "    Export finished...refresh page to view download link" 
 echo "=========================================================================================" 
 echo " "
