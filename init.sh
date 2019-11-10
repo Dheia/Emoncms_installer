@@ -1,4 +1,6 @@
 #!/bin/bash
+openenergymonitor_dir=/opt/openenergymonitor_mod
+
 
 sudo apt-get install -y git
 
@@ -12,6 +14,8 @@ fi
 sudo chown $user $openenergymonitor_dir
 
 cd $openenergymonitor_dir
+
+if [ -f $openenergymonitor_dir/config_mod.cfg ]
 
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
