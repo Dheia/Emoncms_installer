@@ -1,9 +1,5 @@
 #!/bin/bash
 
-user=$USER
-emoncms_dir=/opt/emoncms
-openenergymonitor_dir=/opt/openenergymonitor_mod
-
 sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
