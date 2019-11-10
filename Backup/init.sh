@@ -8,6 +8,5 @@ cp $openenergymonitor_dir/Emoncms-Scripts/Backup/emoncmcs-import.sh $emoncms/mod
 var="//192.168.0.11/Backup_EmonPi  /media/Emoncms_backup_diario cifs username=emonpi,password=pi 0 0"
 [ $(grep -c "$var" /etc/fstab) -eq 0 ] && echo -e "\n$var" | sudo tee -a /etc/fstab
 sudo mount -a
-#00 4 * * * /opt/emon/modules/backup/emoncms-export.sh >> /opt/emon/data/emoncms-export.log 2>&1
+(sudo crontab -l ; echo "00 4 * * * /opt/emon/modules/backup/emoncms-export.sh >> /opt/emon/data/emoncms-export.log 2>&1" ) | crontab -
 #df -h
-#crontab
