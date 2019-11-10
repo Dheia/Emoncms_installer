@@ -1,6 +1,5 @@
-#backup_script_location="/opt/emoncms/modules/backup"
-#backup_location="/opt/openenergymonitor/data"
-if [ -f /opt/emoncms/modules/backup/config.cfg ]
+
+if [ -f $emoncms_dir/modules/backup/config.cfg ]
 
 #Replace import,export script with mod version
 cd $backup_script_location
@@ -10,8 +9,8 @@ cp $openenergymonitor_dir/Emoncms-Scripts/Backup/emoncmcs-export.sh $backup_scri
 cp $openenergymonitor_dir/Emoncms-Scripts/Backup/emoncmcs-import.sh $backup_script_location
 
 # Set Fstab file to mount NAS folder Backup_EmonPi
-var="//192.168.0.11/Backup_EmonPi  /media/Emoncms_backup_diario cifs username=emonpi,password=pi 0 0"
-[ $(grep -c "$var" /etc/fstab) -eq 0 ] && echo -e "\n$var" | sudo tee -a /etc/fstab
+smb="$nas_device  $nas_mount cifs username=emonpi,password=pi 0 0"
+[ $(grep -c "$smb" /etc/fstab) -eq 0 ] && echo -e "\n$smb" | sudo tee -a /etc/fstab
 sudo mount -a
 
 #Cron settings export backup automatically at 4:00
