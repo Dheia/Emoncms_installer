@@ -1,7 +1,7 @@
 #!/bin/bash
 date=$(date +"%Y-%m-%d")
 SECONDS=0
-config_file="/opt/emon/modules/backup/config.cfg"
+config_file="/opt/emoncms/modules/backup/config.cfg"
 nodered_path="/home/pi/.node-red"
 
 echo "========================= Emoncms import start =========================================="
@@ -40,10 +40,8 @@ then
     echo "Error: cannot find backup, stopping import"
     exit 1
 fi
-
 # if backup exists
 echo "- Importing backup file: $backup_filename"
-
 if [ -f $backup_script_location/get_emoncms_mysql_auth.php ]; then
     auth=$(echo $emoncms_location | php $backup_script_location/get_emoncms_mysql_auth.php php)
     IFS=":" read username password database<<< "$auth"
@@ -52,18 +50,16 @@ else
     echo "$PWD"
     exit 1
 fi
-
 if [ ! -d  $backup_location/import ]; then
 	mkdir $backup_location/import
 	sudo chown pi $backup_location/import -R
 fi
-
 echo "- Decompressing $backup_filename"
-echo " "
-pv -fptb -s $(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename 2> >( while read -N 1 c; do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/   $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) |\
-tar xz -C $backup_location/import
-sleep 1;
-exec 1>>$log
+#pv -fptb -s $(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename 2> >( while read -N 1 c; do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/   $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) |\
+#tar xz -C $backup_location/import
+pv -fptb -s$(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename | tar xz -C $backup_location/import
+#sleep 1;
+#exec 1>>$log
 
 if [ $? -ne 0 ]; then
 	echo "Error: failed to decompress backup"
@@ -73,10 +69,8 @@ if [ $? -ne 0 ]; then
 	echo "Import failed"
 	exit 1
 fi
-
 echo "- Removing compressed backup to save disk space"
-sudo rm $backup_source_path/$backup_filename
-
+#sudo rm $backup_source_path/$backup_filename
 if [ -n "$password" ]
 then # if username sring is not empty
     if [ -f $backup_location/import/emoncms.sql ]; then
@@ -99,37 +93,29 @@ else
     echo "Error: cannot read MYSQL authentication details from Emoncms settings.php"
     exit 1
 fi
-
 echo "- Importing feeds meta data"
 sudo rm -rf $database_path/{phpfina,phptimeseries} 2> /dev/null
-
 #echo "- Restore phpfina and phptimeseries data folders..."
 if [ -d $backup_location/import/phpfina ]; then
 	sudo mv $backup_location/import/phpfina $database_path
 	sudo chown -R www-data:root $database_path/phpfina
 fi
-
 if [ -d  $backup_location/import/phptimeseries ]; then
 	sudo mv $backup_location/import/phptimeseries $database_path
 	sudo chown -R www-data:root $database_path/phptimeseries
 fi
-
 # cleanup
 sudo rm $backup_location/import/emoncms.sql
-
 # Save previous config settings as old.emonhub.conf and old.emoncms.conf
-cp  $emonhub_config_path/emonhub.conf $emonhub_config_path/old.emonhub.conf
-
+sudo cp  $emonhub_config_path/emonhub.conf $emonhub_config_path/old.emonhub.conf
 echo "- Importing emonhub.conf"
-mv $backup_location/import/emonhub.conf $emonhub_config_path/emonhub.conf
+sudo mv $backup_location/import/emonhub.conf $emonhub_config_path/emonhub.conf
 sudo touch $emonhub_config_path/emonhub.conf
 sudo chown pi:www-data $emonhub_config_path/emonhub.conf
 sudo chmod 664 $emonhub_config_path/emonhub.conf
-
 echo "- Importing nodered flows"
-mv $backup_location/import/nodered/flows_raspberrypi.json $nodered_path/flows_raspberrypi.json
+sudo mv $backup_location/import/nodered/flows_raspberrypi.json $nodered_path/flows_raspberrypi.json
 #mv $backup_location/import/nodered/flows_raspberrypi_cred.json $nodered_path/flows_raspberrypi_cred.json
-
 echo "- Restarting emoncms_input service"
 sudo service emoncms_mqtt start
 echo "- Restarting nodered service"
@@ -142,8 +128,8 @@ echo "    $(date)"
 echo "    Import time: $(($duration / 60)) min $(($duration % 60)) sec"
 echo "    Backup imported: $backup_filename"  
 echo "    Import finished...refresh page to view download link" 
-echo "============================ Emoncms import complete! ===================================" 
+echo "=========================================================================================" 
+echo " "
+echo "=== Emoncms import complete! ===" 
 # The last line is identified in the interface to stop ongoing AJAX calls, please ammend in interface if changed here
-
-sudo service apache2 restart
 
