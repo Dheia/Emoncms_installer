@@ -3,6 +3,7 @@
 date=$(date +"%Y-%m-%d")
 SECONDS=0
 config_file="/opt/emoncms/modules/backup/config.cfg"
+log="/var/log/emoncms/importbackup.log"
 nodered_path="/home/pi/.node-red"
 
 echo "========================= Emoncms import start =========================================="
@@ -12,7 +13,6 @@ echo ""
 if [ -f $config_file ]
 then
     source $config_file
-    log="/var/log/emoncms/importbackup.log"
     echo "Log file: $log"
     backup_source_path=$backup_source_path
     echo "-----------------------------------------------------------------------------------------"
