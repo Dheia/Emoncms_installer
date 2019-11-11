@@ -1,4 +1,5 @@
 #!/bin/bash
+
 date=$(date +"%Y-%m-%d")
 SECONDS=0
 config_file="/opt/emoncms/modules/backup/config.cfg"
@@ -11,7 +12,7 @@ echo ""
 if [ -f $config_file ]
 then
     source $config_file
-    log="$backup_location/emoncms-import.log"
+    log="/var/log/emoncms/importbackup.log"
     echo "Log file: $log"
     backup_source_path=$backup_source_path
     echo "-----------------------------------------------------------------------------------------"
@@ -55,11 +56,12 @@ if [ ! -d  $backup_location/import ]; then
 	sudo chown pi $backup_location/import -R
 fi
 echo "- Decompressing $backup_filename"
-#pv -fptb -s $(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename 2> >( while read -N 1 c; do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/   $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) |\
-#tar xz -C $backup_location/import
-pv -fptb -s$(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename | tar xz -C $backup_location/import
-#sleep 1;
-#exec 1>>$log
+
+pv -fptb -s $(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename 2> >( while read -N 1 c; do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/   $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) |\
+tar xz -C $backup_location/import
+#pv -fptb -s$(du -sb $backup_source_path/$backup_filename | awk '{print $1}') $backup_source_path/$backup_filename | tar xz -C $backup_location/import
+sleep 1;
+exec 1>>$log
 
 if [ $? -ne 0 ]; then
 	echo "Error: failed to decompress backup"
@@ -70,7 +72,7 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 echo "- Removing compressed backup to save disk space"
-#sudo rm $backup_source_path/$backup_filename
+sudo rm $backup_source_path/$backup_filename
 if [ -n "$password" ]
 then # if username sring is not empty
     if [ -f $backup_location/import/emoncms.sql ]; then
