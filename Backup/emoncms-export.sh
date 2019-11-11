@@ -2,6 +2,7 @@
 date=$(date +"%Y-%m-%d")
 SECONDS=0
 config_file="/opt/emon/modules/backup/config.cfg"
+log="/var/log/emoncms/importbackup.log"
 nodered_path="/home/pi/.node-red"
 nas_mount="/media/Emoncms_backup_diario"
 
@@ -12,7 +13,6 @@ echo ""
 if [ -f $config_file ]
 then
     source $config_file
-    log="$backup_location/emoncms-export.log"
     exec 1>>$log
     echo "Log file: $log"
     echo "-----------------------------------------------------------------------------------------"
@@ -122,9 +122,7 @@ sleep 1
 # Compress backup
 echo "- Compressing archive to gzip: emoncms-backup-$date.tar.gz"
 echo " "
-#pv -fptb -s $(du -sb $phpfina | awk '{print $1}') 2> >( while read -N 1 c;  do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/  $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) > $bkp_tar
 pv -fptb -s $(du -sb $bkp_tar | awk '{print $1}') $bkp_tar 2> >( while read -N 1 c; do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/  $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) | gzip > $bkp_tar.gz
-#pv -fptb -s $(du -sb $bkp_tar | awk '{print $1}') $bkp_tar 2> >( while read -N 1 c; do if [[ $c =~ $'\r' ]]; then sed -i "$ s/.*/  $pv_bar/g" $log; pv_bar=''; else pv_bar+="$c";  fi  done ) | gzip > $bkp_tar.gz
 sleep 1
 exec 1>>$log
 
