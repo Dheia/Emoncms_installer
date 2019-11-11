@@ -1,4 +1,4 @@
-
+sudo apt-get install pv
 if [ -f $emoncms_dir/modules/backup/config.cfg ]
 
 #Replace import,export script with mod version
