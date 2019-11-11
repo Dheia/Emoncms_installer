@@ -1,14 +1,16 @@
 #!/bin/bash
 date=$(date +"%Y-%m-%d")
 SECONDS=0
+config_file="/opt/emon/modules/backup/config.cfg"
+nodered_path="/home/pi/.node-red"
 
 echo "========================= Emoncms import start =========================================="
 date
 echo "This import script has been modified by jatg"
 echo ""
-if [ -f /opt/emon/modules/backup/config.cfg ]
+if [ -f $config_file ]
 then
-    source /opt/emon/modules/backup/config.cfg
+    source $config_file
     log="$backup_location/emoncms-import.log"
     echo "Log file: $log"
     backup_source_path=$backup_source_path
@@ -20,7 +22,7 @@ then
     echo "Backup source:              $backup_source_path"
     echo "-----------------------------------------------------------------------------------------"
 else
-    echo "ERROR: Backup /opt/emon/modules/backup/config.cfg file does not exist"
+    echo "ERROR: Backup $config_file file does not exist"
     exit 1
 fi
 
@@ -96,11 +98,6 @@ then # if username sring is not empty
 else
     echo "Error: cannot read MYSQL authentication details from Emoncms settings.php"
     exit 1
-fi
-
-if [ -f opt/emon/emonpi/update/emoncmsdbupdate.php ]; then
-    echo "- Updating Emoncms Database"
-    php /opt/emon/emonpi/update/emoncmsdbupdate.php 1>/dev/null
 fi
 
 echo "- Importing feeds meta data"
