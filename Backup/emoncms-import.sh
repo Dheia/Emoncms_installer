@@ -1,10 +1,9 @@
 #!/bin/bash
-
-date=$(date +"%Y-%m-%d")
-SECONDS=0
 config_file="/opt/emoncms/modules/backup/config.cfg"
 log="/var/log/emoncms/importbackup.log"
 nodered_path="/home/pi/.node-red"
+date=$(date +"%Y-%m-%d")
+SECONDS=0
 
 echo "========================= Emoncms import start =========================================="
 date
