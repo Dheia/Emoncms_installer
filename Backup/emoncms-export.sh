@@ -1,8 +1,8 @@
 #!/bin/bash
 date=$(date +"%Y-%m-%d")
 SECONDS=0
-config_file="/opt/emon/modules/backup/config.cfg"
-log="/var/log/emoncms/importbackup.log"
+config_file="/opt/emoncms/modules/backup/config.cfg"
+log="/var/log/emoncms/exportbackup.log"
 nodered_path="/home/pi/.node-red"
 nas_mount="/media/Emoncms_backup_diario"
 
@@ -13,7 +13,6 @@ echo ""
 if [ -f $config_file ]
 then
     source $config_file
-    exec 1>>$log
     echo "Log file: $log"
     echo "-----------------------------------------------------------------------------------------"
     echo "File config.cfg: "
@@ -31,7 +30,7 @@ export_file="$backup_location/export"
 phpfina="$database_path/phpfina"
 phptimeseries="$database_path/phptimeseries"
 emonhub_conf="$emonhub_config_path/emonhub.conf"
-emoncms_set="$emoncms_location/settings.php"
+#emoncms_set="$emoncms_location/settings.php"
 bkp_tar="$backup_location/export/emoncms-backup-$date.tar"
 
 #rm $export_file/*
@@ -99,7 +98,7 @@ echo "- Emoncms MYSQL database dump complete"
 echo "- Adding Emoncms and Emonhub config files to: emoncms-backup-$date.tar"
 
 # Create backup archive and add config files stripping out the path
-tar -Prf $bkp_tar $export_file/temp/emoncms.sql $emonhub_conf $emoncms_set --transform 's?.*/??g' 2>&1
+tar -Prf $bkp_tar $export_file/temp/emoncms.sql $emonhub_conf --transform 's?.*/??g' 2>&1
 if [ $? -ne 0 ]; then
     echo "Error: failed to tar config data"
     echo "emoncms export failed"
