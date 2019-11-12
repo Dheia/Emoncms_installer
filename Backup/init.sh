@@ -1,8 +1,10 @@
 #!/bin/bash
 config_file="/opt/emoncms/modules/backup/config.cfg"
+log="/var/log/emoncms/exportbackup.log"
 
 if [ -f $config_file ]
 then
+  source $config_file
   #Used for import export scripts to show progress bar
   sudo apt-get install pv
   #Replace import,export script with mod version
@@ -18,10 +20,12 @@ then
   sudo mount -a
 
   #Cron settings export backup automatically at 4:00
-  #redis-cli RPUSH service-runner "/opt/emoncms/modules/backup/emoncms-export.sh /tmp/emoncms-flag-import>/var/log/emoncms/exportbackup.log"
-  #redis-cli RPUSH service-runner "/opt/emoncms/modules/backup/emoncms-export.sh>/var/log/emoncms/exportbackup.log"
-
-  (crontab -l ; echo "00 4 * * * $backup_script_location/emoncms-export.sh >> $backup_location/emoncms-export.log 2>&1" ) | crontab -
+  
+  #Using service-runner to run export script
+  (crontab -l ; echo "00 4 * * * redis-cli RPUSH service-runner $backup_script_location/emoncms-export.sh>$log") | crontab -
+  #redis-cli RPUSH service-runner "$backup_script_location/emoncms-export.sh /tmp/emoncms-flag-import>$log"
+  #Using export script directly
+  #(crontab -l ; echo "00 4 * * * $backup_script_location/emoncms-export.sh >> $backup_location/$log 2>&1" ) | crontab -
   #df -h
 else
   echo "ERROR: Backup $config_file file does not exist"
