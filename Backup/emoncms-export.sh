@@ -1,10 +1,10 @@
 #!/bin/bash
-date=$(date +"%Y-%m-%d")
-SECONDS=0
 config_file="/opt/emoncms/modules/backup/config.cfg"
 log="/var/log/emoncms/exportbackup.log"
 nodered_path="/home/pi/.node-red"
 nas_mount="/media/Emoncms_backup_diario"
+date=$(date +"%Y-%m-%d")
+SECONDS=0
 
 echo "========================= Emoncms export start =========================================="
 date
