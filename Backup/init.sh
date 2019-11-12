@@ -14,5 +14,8 @@ smb="$nas_device  $nas_mount cifs username=emonpi,password=pi 0 0"
 sudo mount -a
 
 #Cron settings export backup automatically at 4:00
+#redis-cli RPUSH service-runner "/opt/emoncms/modules/backup/emoncms-import.sh /tmp/emoncms-flag-import>/var/log/emoncms/importbackup.log"
+#redis-cli RPUSH service-runner "/opt/emoncms/modules/backup/emoncms-import.sh>/var/log/emoncms/importbackup.log"
 (crontab -l ; echo "00 4 * * * $backup_script_location/emoncms-export.sh >> $backup_location/emoncms-export.log 2>&1" ) | crontab -
+
 #df -h
