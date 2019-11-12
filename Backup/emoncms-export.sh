@@ -135,7 +135,7 @@ fi
 echo "- Deleting temporary folder"
 rm -r $backup_location/export/temp
 rm $bkp_tar
-sudo cp $backup_location/export/emoncms-backup-$date.tar.gz $$nas_mount
+sudo cp $backup_location/export/emoncms-backup-$date.tar.gz $nas_mount
 rm $backup_location/export/emoncms-backup-$date.tar.gz
 
 duration=$SECONDS
