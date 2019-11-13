@@ -24,7 +24,7 @@ then
   #redis-cli RPUSH service-runner "$backup_script_location/emoncms-export.sh /tmp/emoncms-flag-import>$log"
   job_bkp="00 4 * * * ${backup_script_location}/emoncms-export.sh>${backup_script_location}/emoncms-export.log 2>&1"
   #Using export script directly
-  #job_bkp=00 4 * * * $backup_script_location/emoncms-export.sh >> $backup_location/emoncms-export.log 2>&1
+  #job_bkp="00 4 * * * $backup_script_location/emoncms-export.sh >> $backup_location/emoncms-export.log 2>&1"
   crontab -l | grep -Fq "$job_bkp"  || (crontab -l ; echo "$job_bkp" ) | crontab -
   #df -h
 else
