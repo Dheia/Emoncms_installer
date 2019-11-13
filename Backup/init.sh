@@ -1,6 +1,10 @@
 #!/bin/bash
 config_file="/opt/emoncms/modules/backup/config.cfg"
 log="/var/log/emoncms/exportbackup.log"
+nas_mount="/media/Emoncms_backup_diario"
+nas_device="//192.168.0.11/Backup_EmonPi"
+nas_user="emonpi"
+nas_pass="pi"
 
 if [ -f $config_file ]
 then
