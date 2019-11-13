@@ -5,6 +5,7 @@ nodered_path="/home/pi/.node-red"
 nas_mount="/media/Emoncms_backup_diario"
 date=$(date +"%Y-%m-%d")
 SECONDS=0
+exec 1>>$log
 
 echo "========================= Emoncms export start =========================================="
 date
