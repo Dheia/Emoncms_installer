@@ -4,6 +4,7 @@ log="/var/log/emoncms/importbackup.log"
 nodered_path="/home/pi/.node-red"
 date=$(date +"%Y-%m-%d")
 SECONDS=0
+exec 1>>$log
 
 echo "========================= Emoncms import start =========================================="
 date
