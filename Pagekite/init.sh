@@ -1,3 +1,6 @@
+kitename="dv-home303.pagekite.me"
+kitesecret="299d2c2k3bc8bx7aacfxfxczb8ce47z4"
+
 sudo apt-get install dirmngr
 # Add our repository to /etc/apt/sources.list
 echo deb http://pagekite.net/pk/deb/ pagekite main | sudo tee -a /etc/apt/sources.list
