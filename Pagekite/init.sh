@@ -10,3 +10,15 @@ sudo apt-key adv --recv-keys --keyserver keys.gnupg.net AED248B1C7B2CAC3
 sudo apt-get update
 # Install pagekite
 sudo apt-get install pagekite
+
+while true; do
+        read -p "Enter kitename (xxx.pagekite.me): " var
+        if [[ $var == *pagekite.me ]];then
+            break
+        else echo "Error input contains non pagekite.me form"
+        fi
+done
+sed -i "s/^kitename *=.*$/kitename  = $var/" 10_account.rc
+read -p "please enter the kitesecret: " var
+sed -i "s/^kitesecret *=.*$/kitesecret = $var/" 10_account.rc
+
