@@ -1,7 +1,5 @@
 #!/bin/bash
 openenergymonitor_dir=/opt/openenergymonitor_mod
-
-
 sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
