@@ -13,13 +13,12 @@ fi
 
 cd $openenergymonitor_dir
 
-if [ -f $openenergymonitor_dir/config_mod.cfg ]
+#if [ -f $openenergymonitor_dir/config_mod.cfg ]
 
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
 git checkout master
-cd
 sudo rm init.sh
 
 while true; do      
