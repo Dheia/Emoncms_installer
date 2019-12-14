@@ -11,7 +11,7 @@ if [ -d "$openenergymonitor_dir" ]; then
 else
     sudo mkdir -p "$openenergymonitor_dir"
 fi
-sudo chown $user $openenergymonitor_dir
+#sudo chown $user $openenergymonitor_dir
 
 cd $openenergymonitor_dir
 
