@@ -15,20 +15,36 @@ while true; do
             fi
             sudo sed -i 's/console=serial0,*[^ ]*[ \|$\]*//g' /boot/cmdline.txt
             sudo systemctl disable hciuart
-            sudo reboot
+            
+            #sudo reboot
         ;;
-        2)
-            sudo apt install minicom -y
-            stty -F /dev/ttyAMA0 speed 38400 cs8 -cstopb -parenb raw
-            echo -ne "6i" > /dev/ttyAMA0
-            echo -ne "210g" > /dev/ttyAMA0
-            echo -ne "4b" > /dev/ttyAMA0
-            echo -ne "1c" > /dev/ttyAMA0  #collect mode 1c dont send acks
-            echo -ne "1q" > /dev/ttyAMA0
-            minicom -b 38400 -D /dev/ttyAMA0
+        2)  echo "RFM69Pi"
+            echo "1) Main Mode ->  Node:5, Group:210, 433Mhz, Send ACKs: on"
+            echo "2) Test Mode ->  Node:6, Group:210, 433Mhz, Send ACKs: off"
+            read -p "Choose number option: " var
+            
+            case $var in
+            1)
+              echo -ne "5i" > /dev/ttyAMA0
+              echo -ne "210g" > /dev/ttyAMA0
+              echo -ne "4b" > /dev/ttyAMA0
+              echo -ne "0c" > /dev/ttyAMA0  #collect mode  send acks
+              echo -ne "1q" > /dev/ttyAMA0  #show only valid packets
+            ;;
+            2)
+              echo -ne "6i" > /dev/ttyAMA0
+              echo -ne "210g" > /dev/ttyAMA0
+              echo -ne "4b" > /dev/ttyAMA0
+              echo -ne "1c" > /dev/ttyAMA0  #collect mode do not send acks
+              echo -ne "1q" > /dev/ttyAMA0  #show only valid packets
+            ;;
+            *)
+              echo "Invalid option"
+           ;;
+           esac
         ;;
       esac
     else
-      exit
+      break
     fi
 done
