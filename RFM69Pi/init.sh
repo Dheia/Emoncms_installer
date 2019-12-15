@@ -45,8 +45,13 @@ while true; do
             ;;
             *)
               echo "Invalid option"
-           ;;
-           esac
+             ;;
+             esac
+             read -p "Do you want to open minicom (y/n): " var
+             if [ "$var" = "Y" ] || [ "$var" = "y" ]
+             then
+                minicom -b 38400 -D /dev/ttyAMA0
+             fi
         ;;
       esac
     else
