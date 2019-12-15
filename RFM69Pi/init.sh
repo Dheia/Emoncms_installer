@@ -6,15 +6,19 @@ while true; do
     if [ $exitstatus = 0 ]; then
       case $OPTION in
         1)
+            #Disable Bluetooh
             [ $(grep -c "dtoverlay=pi3-disable-bt$" /boot/config.txt) -eq 0 ] && echo -e "\ndtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
+            sudo systemctl disable hciuart
+            #
             if [ $(grep -c "enable_uart=" /boot/config.txt) -eq 0 ]
             then
                 echo -e "enable_uart=1" | sudo tee -a /boot/config.txt
             else
                 sudo sed -i "s/^enable_uart=.*/enable_uart=1/" /boot/config.txt
             fi
+            #Disabling Raspbian use of console UART
             sudo sed -i 's/console=serial0,*[^ ]*[ \|$\]*//g' /boot/cmdline.txt
-            sudo systemctl disable hciuart
+            
             read -p "Do you want to restart now (y/n): " var
             if [ "$var" = "Y" ] || [ "$var" = "y" ]
             then
