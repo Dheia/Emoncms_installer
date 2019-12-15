@@ -1,7 +1,7 @@
 while true; do      
   OPTION=$(whiptail --title "Install RFM69Pi Menu Dialog" --menu "Choose your option" 15 60 2 \
     "1" "Raspberry configuration (Reboot required)" \
-    "2" "RFM69Pi configuration" \
+    "2" "RFM69Pi configuration" 3>&1 1>&2 2>&3)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
