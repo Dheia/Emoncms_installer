@@ -15,8 +15,8 @@ while true; do
             fi
             sudo sed -i 's/console=serial0,*[^ ]*[ \|$\]*//g' /boot/cmdline.txt
             sudo systemctl disable hciuart
-            read -p "Do you want to restart now: y/n" var
-            if [$var ="y"]
+            read -p "Do you want to restart now: y/n: " var
+            if [$var = y ]
             then
                 echo "Restarting ...."
             fi
