@@ -9,3 +9,13 @@ fi
 sudo sed -i 's/console=serial0,*[^ ]*[ \|$\]*//g' /boot/cmdline.txt
 sudo systemctl disable hciuart
 sudo apt install minicom -y
+
+
+stty -F /dev/ttyAMA0 speed 38400 cs8 -cstopb -parenb raw
+echo -ne "6i" > /dev/ttyAMA0
+echo -ne "210g" > /dev/ttyAMA0
+echo -ne "4b" > /dev/ttyAMA0
+echo -ne "1c" > /dev/ttyAMA0  #collect mode 1c dont send acks
+echo -ne "1q" > /dev/ttyAMA0
+
+minicom -b 38400 -D /dev/ttyAMA0
