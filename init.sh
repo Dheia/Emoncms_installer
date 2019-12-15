@@ -34,28 +34,37 @@ while true; do
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
-        1)  
+        1)
+            cd /opt
+            wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/stable/install/init.sh
+            chmod +x init.sh && ./init.sh
+        ;;
+        2)
+            cd $openenergymonitor_dir/Emoncms-Scripts/RFM69Pi
+            sudo chmod +x init.sh && ./init.sh
+        ;;
+        3)  
             cd $openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
             sudo chmod +x init.sh && ./init.sh
         ;;
-        2)
+        4)
             cd $openenergymonitor_dir/Emoncms-Scripts/Node-RED
             sudo chmod +x init.sh && ./init.sh
         ;;
-        3)
+        5)
             cd $openenergymonitor_dir/Emoncms-Scripts/USB_HDD
             sudo chmod +x usb_hdd
             sudo  ./usb_hdd -d /dev/sda
         ;;
-        4)
+        6)
             cd $openenergymonitor_dir/Emoncms-Scripts/Pagekite
             sudo chmod +x init.sh && ./init.sh
         ;;
-        5)
+        7)
             cd $openenergymonitor_dir/Emoncms-Scripts/Backup
             sudo chmod +x init.sh && ./init.sh
         ;;
-        6)
+        8)
             cd $openenergymonitor_dir/Emoncms-Scripts/SSH_root
             sudo chmod +x init.sh && ./init.sh
         ;;
