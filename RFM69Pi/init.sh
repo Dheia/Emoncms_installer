@@ -22,7 +22,7 @@ while true; do
             fi
             #sudo reboot
         ;;
-        2)  echo "RFM69Pi"
+        2)  echo -e"\nRFM69Pi"
             echo "1) Main Mode ->  Node:5, Group:210, 433Mhz, Send ACKs: on"
             echo "2) Test Mode ->  Node:6, Group:210, 433Mhz, Send ACKs: off"
             read -p "Choose number option: " var
