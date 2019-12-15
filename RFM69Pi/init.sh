@@ -23,8 +23,9 @@ while true; do
             if [ "$var" = "Y" ] || [ "$var" = "y" ]
             then
                 echo "Restarting ...."
+                sudo reboot
             fi
-            #sudo reboot
+            
         ;;
         2)  stty -F /dev/ttyAMA0 speed 38400 cs8 -cstopb -parenb raw
             echo -e "\nRFM69Pi"
