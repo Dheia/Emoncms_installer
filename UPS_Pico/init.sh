@@ -9,3 +9,4 @@ if [ -f /etc/init.d/picofssd ]; then
 fi
 sudo update-rc.d picofssd defaults
 #sudo update-rc.d picofssd enable
+echo "UPS_Pico installed successfully..."
