@@ -35,7 +35,7 @@ while true; do
         2)
             cd /opt
             wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/stable/install/init.sh
-            chmod +x init.sh && ./init.sh
+            sudo chmod +x init.sh && ./init.sh
             sudo rm init.sh
             
         ;;
