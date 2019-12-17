@@ -61,7 +61,7 @@ while true; do
             sudo chmod +x init.sh && ./init.sh
         ;;
         8)
-            cd $openenergymonitor_mod/Emoncms-Scripts/SSH_root
+            cd $openenergymonitor_mod/Emoncms-Scripts/SSH_rootaccess
             sudo chmod +x init.sh && ./init.sh
         ;;
       esac
