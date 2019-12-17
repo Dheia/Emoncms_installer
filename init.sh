@@ -34,8 +34,7 @@ while true; do
             sudo chmod +x init.sh && ./init.sh
         ;;
         2)
-            cd /opt
-            sudo wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/stable/install/init.sh -O init.sh
+            cd $openenergymonitor_mod/Emoncms-Scripts/Emoncms
             sudo chmod +x init.sh && ./init.sh
             sudo rm init.sh
             
