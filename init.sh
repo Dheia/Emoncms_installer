@@ -3,6 +3,7 @@ openenergymonitor_dir=/opt/openenergymonitor_mod
 sudo apt-get update && sudo apt-get upgrade 
 sudo apt-get install -y git
 
+clear
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
 [ -d "$openenergymonitor_dir" ] && sudo rm -r $openenergymonitor_dir
 sudo mkdir -p "$openenergymonitor_dir"
