@@ -8,8 +8,6 @@ sudo mkdir -p "$openenergymonitor_dir"
 
 cd $openenergymonitor_dir
 
-#if [ -f $openenergymonitor_dir/config_mod.cfg ]
-
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
@@ -37,6 +35,7 @@ while true; do
             cd /opt
             wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/stable/install/init.sh
             chmod +x init.sh && ./init.sh
+            sudo rm init.sh
             
         ;;
         3)  
