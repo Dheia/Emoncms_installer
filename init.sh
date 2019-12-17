@@ -1,18 +1,18 @@
 #!/bin/bash
-openenergymonitor_dir=/opt/openenergymonitor_mod
+openenergymonitor_mod=/opt/openenergymonitor_mod
 sudo apt-get update && sudo apt-get upgrade 
 sudo apt-get install -y git
 
 clear
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
-[ -d "$openenergymonitor_dir" ] && sudo rm -r $openenergymonitor_dir
-sudo mkdir -p "$openenergymonitor_dir"
+[ -d "$openenergymonitor_mod" ] && sudo rm -r $openenergymonitor_mod
+sudo mkdir -p "$openenergymonitor_mod"
 
-cd $openenergymonitor_dir
+cd $openenergymonitor_mod
 
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 sudo git clone https://github.com/jatg81/Emoncms-Scripts.git
-cd $openenergymonitor_dir/Emoncms-Scripts
+cd $openenergymonitor_mod/Emoncms-Scripts
 sudo git checkout master
 sudo rm init.sh
 
@@ -30,7 +30,7 @@ while true; do
     if [ $exitstatus = 0 ]; then
       case $OPTION in
         1)
-            cd $openenergymonitor_dir/Emoncms-Scripts/RFM69Pi
+            cd $openenergymonitor_mod/Emoncms-Scripts/RFM69Pi
             sudo chmod +x init.sh && ./init.sh
         ;;
         2)
@@ -41,28 +41,28 @@ while true; do
             
         ;;
         3)  
-            cd $openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
+            cd $openenergymonitor_mod/Emoncms-Scripts/UPS_Pico
             sudo chmod +x init.sh && ./init.sh
         ;;
         4)
-            cd $openenergymonitor_dir/Emoncms-Scripts/Node-RED
+            cd $openenergymonitor_mod/Emoncms-Scripts/Node-RED
             sudo chmod +x init.sh && ./init.sh
         ;;
         5)
-            cd $openenergymonitor_dir/Emoncms-Scripts/USB_HDD
+            cd $openenergymonitor_mod/Emoncms-Scripts/USB_HDD
             sudo chmod +x usb_hdd
             sudo  ./usb_hdd -d /dev/sda
         ;;
         6)
-            cd $openenergymonitor_dir/Emoncms-Scripts/Pagekite
+            cd $openenergymonitor_mod/Emoncms-Scripts/Pagekite
             sudo chmod +x init.sh && ./init.sh
         ;;
         7)
-            cd $openenergymonitor_dir/Emoncms-Scripts/Backup
+            cd $openenergymonitor_mod/Emoncms-Scripts/Backup
             sudo chmod +x init.sh && ./init.sh
         ;;
         8)
-            cd $openenergymonitor_dir/Emoncms-Scripts/SSH_root
+            cd $openenergymonitor_mod/Emoncms-Scripts/SSH_root
             sudo chmod +x init.sh && ./init.sh
         ;;
       esac
