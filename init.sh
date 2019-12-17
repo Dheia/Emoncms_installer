@@ -12,7 +12,7 @@ cd $openenergymonitor_dir
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 sudo git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
-git checkout master
+sudo git checkout master
 sudo rm init.sh
 
 while true; do      
@@ -36,7 +36,7 @@ while true; do
             cd /opt
             sudo wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/stable/install/init.sh
             sudo chmod +x init.sh && ./init.sh
-            sudo rm init.sh
+            #sudo rm init.sh
             
         ;;
         3)  
