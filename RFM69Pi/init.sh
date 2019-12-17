@@ -19,6 +19,7 @@ while true; do
             #Disabling Raspbian use of console UART
             sudo sed -i 's/console=serial0,*[^ ]*[ \|$\]*//g' /boot/cmdline.txt
             
+            echo "Raspberry configurated successfully ..."
             read -p "Do you want to restart now (y/n): " var
             if [ "$var" = "Y" ] || [ "$var" = "y" ]
             then
@@ -40,6 +41,7 @@ while true; do
               echo -ne "4b" > /dev/ttyAMA0
               echo -ne "0c" > /dev/ttyAMA0  #collect mode  send acks
               echo -ne "1q" > /dev/ttyAMA0  #show only valid packets
+              echo "RFM69Pi configurated successfully ..."
             ;;
             2)
               echo -ne "6i" > /dev/ttyAMA0
@@ -47,6 +49,7 @@ while true; do
               echo -ne "4b" > /dev/ttyAMA0
               echo -ne "1c" > /dev/ttyAMA0  #collect mode do not send acks
               echo -ne "1q" > /dev/ttyAMA0  #show only valid packets
+              echo "RFM69Pi configurated successfully ..."
             ;;
             *)
               echo "Invalid option"
