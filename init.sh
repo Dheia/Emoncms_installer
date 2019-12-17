@@ -33,38 +33,38 @@ while true; do
       case $OPTION in
         1)
             cd $openenergymonitor_mod/Emoncms-Scripts/RFM69Pi
-            sudo chmod +x init.sh && ./init.sh
+            chmod +x init.sh && ./init.sh
         ;;
         2)
             cd $openenergymonitor_mod/Emoncms-Scripts/Emoncms
-            sudo chmod +x init.sh && ./init.sh
-            sudo rm init.sh
+            chmod +x init.sh && ./init.sh
+            rm init.sh
             
         ;;
         3)  
             cd $openenergymonitor_mod/Emoncms-Scripts/UPS_Pico
-            sudo chmod +x init.sh && ./init.sh
+            chmod +x init.sh && ./init.sh
         ;;
         4)
             cd $openenergymonitor_mod/Emoncms-Scripts/Node-RED
-            sudo chmod +x init.sh && ./init.sh
+            chmod +x init.sh && ./init.sh
         ;;
         5)
             cd $openenergymonitor_mod/Emoncms-Scripts/USB_HDD
-            sudo chmod +x usb_hdd
-            sudo  ./usb_hdd -d /dev/sda
+            chmod +x usb_hdd
+            ./usb_hdd -d /dev/sda
         ;;
         6)
             cd $openenergymonitor_mod/Emoncms-Scripts/Pagekite
-            sudo chmod +x init.sh && ./init.sh
+            chmod +x init.sh && ./init.sh
         ;;
         7)
             cd $openenergymonitor_mod/Emoncms-Scripts/Backup
-            sudo chmod +x init.sh && ./init.sh
+            chmod +x init.sh && ./init.sh
         ;;
         8)
             cd $openenergymonitor_mod/Emoncms-Scripts/SSH_rootaccess
-            sudo chmod +x init.sh && ./init.sh
+            chmod +x init.sh && ./init.sh
         ;;
       esac
     else
