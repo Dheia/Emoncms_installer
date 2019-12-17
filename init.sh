@@ -1,5 +1,6 @@
 #!/bin/bash
 openenergymonitor_dir=/opt/openenergymonitor_mod
+sudo apt-get update && sudo apt-get upgrade 
 sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
@@ -9,7 +10,7 @@ sudo mkdir -p "$openenergymonitor_dir"
 cd $openenergymonitor_dir
 
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
-git clone https://github.com/jatg81/Emoncms-Scripts.git
+sudo git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_dir/Emoncms-Scripts
 git checkout master
 sudo rm init.sh
