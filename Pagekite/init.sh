@@ -52,3 +52,4 @@ then
 fi
 
 sudo service pagekite restart
+echo "Pagekite installed successfully..."
