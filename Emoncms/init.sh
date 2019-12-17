@@ -17,7 +17,6 @@ sudo chown $user $emoncms_dir
 [ -d "$emoncms_www" ] && sudo rm -r $emoncms_www
 [ -d "$emoncms_var" ] && sudo rm -r $emoncms_var
 
-
 cd $openenergymonitor_dir
 
 sudo git clone https://github.com/openenergymonitor/EmonScripts.git
@@ -27,5 +26,3 @@ sudo git checkout stable
 cd $openenergymonitor_dir/EmonScripts/install
 ./main.sh
 cd
-
-sudo rm init.sh
