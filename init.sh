@@ -3,13 +3,8 @@ openenergymonitor_dir=/opt/openenergymonitor_mod
 sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
-if [ -d "$openenergymonitor_dir" ]; then
-    cd  $openenergymonitor_dir
-    sudo rm -r *
-else
-    sudo mkdir -p "$openenergymonitor_dir"
-fi
-#sudo chown $user $openenergymonitor_dir
+[ -d "$openenergymonitor_dir" ] && sudo rm -r $openenergymonitor_dir
+sudo mkdir -p "$openenergymonitor_dir"
 
 cd $openenergymonitor_dir
 
@@ -35,13 +30,14 @@ while true; do
     if [ $exitstatus = 0 ]; then
       case $OPTION in
         1)
+            cd $openenergymonitor_dir/Emoncms-Scripts/RFM69Pi
+            sudo chmod +x init.sh && ./init.sh
+        ;;
+        2)
             cd /opt
             wget https://raw.githubusercontent.com/openenergymonitor/EmonScripts/stable/install/init.sh
             chmod +x init.sh && ./init.sh
-        ;;
-        2)
-            cd $openenergymonitor_dir/Emoncms-Scripts/RFM69Pi
-            sudo chmod +x init.sh && ./init.sh
+            
         ;;
         3)  
             cd $openenergymonitor_dir/Emoncms-Scripts/UPS_Pico
