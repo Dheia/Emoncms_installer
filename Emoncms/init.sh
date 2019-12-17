@@ -25,4 +25,4 @@ git checkout stable
 
 cd $openenergymonitor_dir/EmonScripts/install
 ./main.sh
-cd
+echo "Emoncms installed successfully..."
