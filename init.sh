@@ -24,7 +24,7 @@ while true; do
     "4" "Install NodeRed" \
     "5" "Install HDD usb" \
     "6" "Install PageKite" \
-    "7" "Install Backup_mod" \
+    "7" "Install Backup Module mod" \
     "8" "Enable SSH root access"  3>&1 1>&2 2>&3)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
