@@ -21,6 +21,7 @@ cd $openenergymonitor_dir/EmonScripts
 git checkout stable
 
 cp $openenergymonitor_mod/Emoncms-Scripts/config.ini $openenergymonitor_dir/EmonScripts/install/config.ini
+sudo chmod +x  $openenergymonitor_dir/EmonScripts/install/emoncms_emonpi_modules.sh
 
 cd $openenergymonitor_dir/EmonScripts/install
 ./main.sh
