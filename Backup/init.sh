@@ -25,9 +25,9 @@ then
   echo "Setting Fstab file to mount NAS folder Backup_EmonPi ..."
   # Set Fstab file to mount NAS folder Backup_EmonPi
   smb="$nas_device  $nas_mount cifs username=emonpi,password=pi 0 0"
-  [ $(grep -c "$smb" /etc/fstab) -eq 0 ] && echo -e "\n$smb" | sudo tee -a /etc/fstab 1>/dev/null
-  echo "v "
-  sudo mount -a
+  [ $(grep -c "$smb" /etc/fstab) -eq 0 ] && echo -e "\n$smb" | sudo tee -a /etc/fstab
+  echo "v 2"
+  #sudo mount -a
 
   #Cron settings export backup automatically at 4:00
   echo "Setting backup job to cron to export backup automatically ..."
