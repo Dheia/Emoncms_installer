@@ -1,4 +1,6 @@
 #!/bin/bash
+source ../config.ini
+
 clear
 echo "Updating system and installing git package ..."
 openenergymonitor_mod=/opt/openenergymonitor_mod
@@ -20,8 +22,8 @@ git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_mod/Emoncms-Scripts
 sudo git checkout master
 echo "we $openenergymonitor_mod"
-cp "$openenergymonitor_mod/Emoncms-Scripts/config.ini" "$openenergymonitor_dir/EmonScripts/install/config.ini"
 sudo rm init.sh
+cp $openenergymonitor_mod/Emoncms-Scripts/config.ini $openenergymonitor_dir/EmonScripts/install/config.ini
 
 while true; do      
   OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 8 \
