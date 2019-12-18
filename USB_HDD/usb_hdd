@@ -5,6 +5,9 @@
 #
 # See README.md for details of usage.
 
+echo "-------------------------------------------------"
+echo "Root filesystem to HDD external USB              "
+echo "-------------------------------------------------"
 set -e
 
 function print_version() {
