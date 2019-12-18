@@ -11,7 +11,7 @@ sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
 [ -d "$openenergymonitor_mod" ] && sudo rm -r $openenergymonitor_mod
-mkdir -p "$openenergymonitor_mod"
+sudo mkdir -p "$openenergymonitor_mod"
 chown $user $openenergymonitor_mod
 
 cd $openenergymonitor_mod
