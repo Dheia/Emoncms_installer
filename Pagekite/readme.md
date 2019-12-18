@@ -4,7 +4,3 @@ This built script installs Pagekite a reverse proxy tool that connects local ser
 
   - Default Kite Secret
   - Subdomain kites (sub-kite.pagekite.me or sub.kite.pagekite.me) 
-
-```shell
-sudo wget https://raw.githubusercontent.com/jatg81/Emoncms-Scripts/master/Pagekite/init.sh -O init.sh && sudo chmod +x init.sh && ./init.sh
-```
