@@ -3,7 +3,9 @@ openenergymonitor_mod=/opt/openenergymonitor_mod
 user=$USER
 
 clear
+echo "-------------------------------------------------"
 echo "Updating system and installing git package ..."
+echo "-------------------------------------------------"
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get dist-upgrade -y && sudo apt-get clean
 sudo apt --fix-broken install
