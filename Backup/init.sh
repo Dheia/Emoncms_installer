@@ -24,6 +24,8 @@ then
   
   echo "Setting Fstab file to mount NAS folder Backup_EmonPi ..."
   # Set Fstab file to mount NAS folder Backup_EmonPi
+  
+  [ -d "$nas_device" ] && sudo mkdir $nas_mount
   smb="$nas_device  $nas_mount cifs username=emonpi,password=pi 0 0"
   [ $(grep -c "$smb" /etc/fstab) -eq 0 ] && echo -e "\n$smb" | sudo tee -a /etc/fstab
   sudo mount -a
