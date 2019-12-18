@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+echo "Updating system and installing git package ..."
 openenergymonitor_mod=/opt/openenergymonitor_mod
 user=$USER
 sudo apt-get update && sudo apt-get upgrade
