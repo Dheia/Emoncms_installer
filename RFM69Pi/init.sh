@@ -10,6 +10,7 @@ while true; do
             echo "Raspberry serial port configuration              "
             echo "-------------------------------------------------"
             #Disable Bluetooh
+            sudo apt install minicom -y
             [ $(grep -c "dtoverlay=pi3-disable-bt$" /boot/config.txt) -eq 0 ] && echo -e "\ndtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
             sudo systemctl disable hciuart
             #
