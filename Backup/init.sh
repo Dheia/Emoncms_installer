@@ -22,15 +22,15 @@ then
   cp $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncms-import.sh $backup_script_location
   cp $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncms-export.sh $backup_script_location
   
-  echo "Setting Fstab file to mount NAS folder Backup_EmonPi"
+  echo "Setting Fstab file to mount NAS folder Backup_EmonPi ..."
   # Set Fstab file to mount NAS folder Backup_EmonPi
   smb="$nas_device  $nas_mount cifs username=emonpi,password=pi 0 0"
-  [ $(grep -c "$smb" /etc/fstab) -eq 0 ] && echo -e "\n$smb" | sudo tee -a /etc/fstab
+  [ $(grep -c "$smb" /etc/fstab) -eq 0 ] && echo -e "\n$smb" | sudo tee -a /etc/fstab 1>/dev/null
   echo " "
   sudo mount -a
 
   #Cron settings export backup automatically at 4:00
-  echo "Setting backup job to cron to export backup automatically"
+  echo "Setting backup job to cron to export backup automatically ..."
   #Using service-runner
   #redis-cli RPUSH service-runner "$backup_script_location/emoncms-export.sh /tmp/emoncms-flag-import>$log"
   job_bkp="00 4 * * * ${backup_script_location}/emoncms-export.sh>${backup_script_location}/emoncms-export.log 2>&1"
