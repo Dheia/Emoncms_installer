@@ -20,6 +20,8 @@ git clone https://github.com/openenergymonitor/EmonScripts.git
 cd $openenergymonitor_dir/EmonScripts
 git checkout stable
 
+cp $openenergymonitor_mod/Emoncms-Scripts/config.ini $openenergymonitor_dir/EmonScripts/config.ini
+
 cd $openenergymonitor_dir/EmonScripts/install
 ./main.sh
 echo "Emoncms installed successfully..."
