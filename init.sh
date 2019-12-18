@@ -20,9 +20,7 @@ echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_mod/Emoncms-Scripts
 sudo git checkout master
-echo "we3 $openenergymonitor_mod"
 sudo rm init.sh
-cp $openenergymonitor_mod/Emoncms-Scripts/config.ini $openenergymonitor_dir/EmonScripts/install/config.ini
 
 while true; do      
   OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 8 \
