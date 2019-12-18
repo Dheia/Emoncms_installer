@@ -1,6 +1,6 @@
 #!/bin/bash
 source ../config.ini
-
+echo "source: $openenergymonitor_mod"
 clear
 echo "Updating system and installing git package ..."
 user=$USER
