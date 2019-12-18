@@ -1,9 +1,8 @@
 #!/bin/bash
-source ../config.ini
+source config.ini
 
 clear
 echo "Updating system and installing git package ..."
-openenergymonitor_mod=/opt/openenergymonitor_mod
 user=$USER
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get dist-upgrade -y && sudo apt-get clean
@@ -21,7 +20,7 @@ echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_mod/Emoncms-Scripts
 sudo git checkout master
-echo "we $openenergymonitor_mod"
+echo "we2 $openenergymonitor_mod"
 sudo rm init.sh
 cp $openenergymonitor_mod/Emoncms-Scripts/config.ini $openenergymonitor_dir/EmonScripts/install/config.ini
 
