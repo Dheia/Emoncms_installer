@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../init.cfg
+source ../config.ini
 config_file="$emoncms_dir/modules/backup/config.cfg"
 log="$emoncms_log_location/exportbackup.log"
 
