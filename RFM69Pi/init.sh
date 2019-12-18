@@ -1,11 +1,14 @@
 while true; do      
   OPTION=$(whiptail --title "Install RFM69Pi Menu Dialog" --menu "Choose your option" 15 60 2 \
-    "1" "Raspberry configuration (Reboot required)" \
+    "1" "Raspberry serial port configuration (Reboot required)" \
     "2" "RFM69Pi configuration" 3>&1 1>&2 2>&3)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
         1)
+            echo "-------------------------------------------------"
+            echo "Raspberry serial port configuration              "
+            echo "-------------------------------------------------"
             #Disable Bluetooh
             [ $(grep -c "dtoverlay=pi3-disable-bt$" /boot/config.txt) -eq 0 ] && echo -e "\ndtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
             sudo systemctl disable hciuart
@@ -19,7 +22,7 @@ while true; do
             #Disabling Raspbian use of console UART
             sudo sed -i 's/console=serial0,*[^ ]*[ \|$\]*//g' /boot/cmdline.txt
             
-            echo "Raspberry configurated successfully ..."
+            echo "Raspberry serial port configurated successfully ..."
             read -p "Do you want to restart now (y/n): " var
             if [ "$var" = "Y" ] || [ "$var" = "y" ]
             then
@@ -28,7 +31,11 @@ while true; do
             fi
             
         ;;
-        2)  stty -F /dev/ttyAMA0 speed 38400 cs8 -cstopb -parenb raw
+        2)  
+            echo "-------------------------------------------------"
+            echo "RFM69Pi configuration"
+            echo "-------------------------------------------------"
+            stty -F /dev/ttyAMA0 speed 38400 cs8 -cstopb -parenb raw
             echo -e "\nRFM69Pi"
             echo "1) Main Mode ->  Node:5, Group:210, 433Mhz, Send ACKs: on"
             echo "2) Test Mode ->  Node:6, Group:210, 433Mhz, Send ACKs: off"
