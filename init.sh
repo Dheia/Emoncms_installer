@@ -2,7 +2,8 @@
 clear
 openenergymonitor_mod=/opt/openenergymonitor_mod
 user=$USER
-sudo apt-get update && sudo apt-get upgrade 
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get dist-upgrade -y && sudo apt-get clean
 sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
