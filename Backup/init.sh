@@ -39,6 +39,7 @@ then
   #job_bkp="00 4 * * * $backup_script_location/emoncms-export.sh >> $backup_script_location/emoncms-export.log 2>&1"
   crontab -l | grep -Fq "$job_bkp"  || (crontab -l ; echo "$job_bkp" ) | crontab -
   #df -h
+  echo "Mod backup module installed successfully  "
 else
   echo "ERROR: Backup $config_file file does not exist"
   exit 1
