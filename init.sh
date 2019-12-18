@@ -1,5 +1,6 @@
 #!/bin/bash
 openenergymonitor_mod=/opt/openenergymonitor_mod
+user=$USER
 
 clear
 echo "Updating system and installing git package ..."
