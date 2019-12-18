@@ -1,11 +1,8 @@
 #!/bin/bash
 
 user=$USER
-openenergymonitor_dir=/opt/openenergymonitor
+
 source /
-emoncms_dir=/opt/emoncms
-emoncms_www=/var/www/emoncms
-emoncms_var=/var/opt/emoncms
 
 [ -d "$openenergymonitor_dir" ] && sudo rm -r $openenergymonitor_dir
 sudo mkdir $openenergymonitor_dir
@@ -16,7 +13,7 @@ sudo mkdir $emoncms_dir
 sudo chown $user $emoncms_dir
 
 [ -d "$emoncms_www" ] && sudo rm -r $emoncms_www
-[ -d "$emoncms_var" ] && sudo rm -r $emoncms_var
+[ -d "$emoncms_datadir" ] && sudo rm -r $emoncms_datadir
 
 cd $openenergymonitor_dir
 
