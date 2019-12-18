@@ -1,3 +1,7 @@
+echo "-------------------------------------------------"
+echo "UPS Pico installation                            "
+echo "-------------------------------------------------"
+
 sudo apt-get install libcurl4-openssl-dev
 sudo apt install python-pip
 cd package
