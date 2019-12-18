@@ -4,19 +4,23 @@ source ../config.ini
 config_file="$emoncms_dir/modules/backup/config.cfg"
 log="$emoncms_log_location/exportbackup.log"
 
+echo "-------------------------------------------------"
+echo "Mod backup module installation                   "
+echo "-------------------------------------------------"
 
 if [ -f $config_file ]
 then
   source $config_file
   #Used for import export scripts to show progress bar
+  echo "Installing PV progress bar ...."
   sudo apt-get install pv
   #Replace import,export script with mod version
   echo "Copying to backup folder import & export modified scripts"
   cd $backup_script_location
   [ -f "emoncmcs-export.sh" ] && rm emoncmcs-export.sh
   [ -f "emoncmcs-import.sh" ] && rm emoncmcs-import.sh
-  cp $openenergymonitor_dir/Emoncms-Scripts/Backup/emoncmcs-export.sh $backup_script_location
-  cp $openenergymonitor_dir/Emoncms-Scripts/Backup/emoncmcs-import.sh $backup_script_location
+  cp $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncmcs-export.sh $backup_script_location
+  cp $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncmcs-import.sh $backup_script_location
   
   echo "Setting Fstab file to mount NAS folder Backup_EmonPi"
   # Set Fstab file to mount NAS folder Backup_EmonPi
