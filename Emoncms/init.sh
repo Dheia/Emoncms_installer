@@ -1,9 +1,8 @@
 #!/bin/bash
 
+source ./init.cfg
+
 user=$USER
-
-source /
-
 [ -d "$openenergymonitor_dir" ] && sudo rm -r $openenergymonitor_dir
 sudo mkdir $openenergymonitor_dir
 sudo chown $user $openenergymonitor_dir
