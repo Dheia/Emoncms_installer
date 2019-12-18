@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../config.ini
+source /config.ini
 
 clear
 echo "Updating system and installing git package ..."
