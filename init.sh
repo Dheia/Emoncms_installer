@@ -44,8 +44,6 @@ while true; do
         2)
             cd $openenergymonitor_mod/Emoncms-Scripts/Emoncms
             chmod +x init.sh && ./init.sh
-            rm init.sh
-            
         ;;
         3)  
             cd $openenergymonitor_mod/Emoncms-Scripts/UPS_Pico
