@@ -56,7 +56,7 @@ while true; do
         5)
             cd $openenergymonitor_mod/Emoncms-Scripts/USB_HDD
             chmod +x usb_hdd
-            ./usb_hdd -d /dev/sda
+            sudo ./usb_hdd -d /dev/sda
         ;;
         6)
             cd $openenergymonitor_mod/Emoncms-Scripts/Pagekite
