@@ -1,8 +1,9 @@
 #!/bin/bash
 source ../config.ini
-echo "source: $openenergymonitor_mod"
+
 clear
 echo "Updating system and installing git package ..."
+echo "source: $openenergymonitor_mod"
 user=$USER
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get dist-upgrade -y && sudo apt-get clean
