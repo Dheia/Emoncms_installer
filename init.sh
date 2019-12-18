@@ -1,7 +1,6 @@
 #!/bin/bash
 openenergymonitor_mod=/opt/openenergymonitor_mod
 
-source config.ini
 clear
 echo "Updating system and installing git package ..."
 sudo apt-get update && sudo apt-get upgrade
@@ -11,16 +10,16 @@ sudo apt-get install -y git
 
 echo "Creating openenergymonitor_mod folder in /opt/ ...."
 [ -d "$openenergymonitor_mod" ] && sudo rm -r $openenergymonitor_mod
-sudo mkdir -p "$openenergymonitor_mod"
-sudo chown $user $openenergymonitor_mod
+mkdir -p "$openenergymonitor_mod"
+chown $user $openenergymonitor_mod
 
 cd $openenergymonitor_mod
 
 echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_mod/Emoncms-Scripts
-sudo git checkout master
-sudo rm init.sh
+git checkout master
+rm init.sh
 
 while true; do      
   OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 8 \
