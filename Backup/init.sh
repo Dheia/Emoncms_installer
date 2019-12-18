@@ -21,7 +21,7 @@ then
   [ -f "emoncmcs-import.sh" ] && rm emoncmcs-import.sh
   cp $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncmcs-export.sh $backup_script_location/emoncmcs-export.sh
   cp $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncmcs-import.sh $backup_script_location/emoncmcs-import.sh
-  echo "backup folder2:  $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncmcs-export.sh $backup_script_location"
+  echo "backup folder3:  $openenergymonitor_mod/Emoncms-Scripts/Backup/emoncmcs-export.sh $backup_script_location"
   echo "Setting Fstab file to mount NAS folder Backup_EmonPi"
   # Set Fstab file to mount NAS folder Backup_EmonPi
   smb="$nas_device  $nas_mount cifs username=emonpi,password=pi 0 0"
