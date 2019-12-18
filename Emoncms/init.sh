@@ -2,6 +2,7 @@
 
 user=$USER
 openenergymonitor_dir=/opt/openenergymonitor
+source /
 emoncms_dir=/opt/emoncms
 emoncms_www=/var/www/emoncms
 emoncms_var=/var/opt/emoncms
