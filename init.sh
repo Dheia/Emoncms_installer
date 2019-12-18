@@ -4,6 +4,7 @@ source config.ini
 
 clear
 echo "Updating system and installing git package ..."
+echo "DIR: $DIR"
 echo "eta4: $openenergymonitor_mod"
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get dist-upgrade -y && sudo apt-get clean
