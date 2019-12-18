@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../init.cfg
+source ../config.ini
 
 user=$USER
 [ -d "$openenergymonitor_dir" ] && sudo rm -r $openenergymonitor_dir
