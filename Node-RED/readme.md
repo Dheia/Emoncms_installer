@@ -8,7 +8,3 @@ This built script install:
 - node-red-node-emoncms
 - node-red-contrib-mi-devices
 - node-red-contrib-pid
-
-```shell
-sudo wget https://raw.githubusercontent.com/jatg81/Emoncms-Scripts/master/Node-RED/init.sh -O init.sh && sudo chmod +x init.sh && ./init.sh
-```
