@@ -1,6 +1,8 @@
 #!/bin/bash
 srv="service_on = http:@kitename : localhost:80 : @kitesecret"
-
+echo "-------------------------------------------------"
+echo "Pagekite installation                            "
+echo "-------------------------------------------------"
 sudo apt-get install dirmngr
 # Add our repository to /etc/apt/sources.list
 echo deb http://pagekite.net/pk/deb/ pagekite main | sudo tee -a /etc/apt/sources.list
