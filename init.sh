@@ -19,7 +19,7 @@ echo "Cloning Emoncms-Scripts repository in openenergymonitor_mod folder ...."
 git clone https://github.com/jatg81/Emoncms-Scripts.git
 cd $openenergymonitor_mod/Emoncms-Scripts
 sudo git checkout master
-echo "$openenergymonitor_mod"
+echo "we $openenergymonitor_mod"
 cp "$openenergymonitor_mod/Emoncms-Scripts/config.ini" "$openenergymonitor_dir/EmonScripts/install/config.ini"
 sudo rm init.sh
 
