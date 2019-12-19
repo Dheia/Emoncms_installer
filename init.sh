@@ -38,25 +38,25 @@ while true; do
     if [ $exitstatus = 0 ]; then
       case $OPTION in
         1)
-            cd $openenergymonitor_mod/Emoncms-Scripts/RFM69Pi
-            chmod +x init.sh && ./init.sh
-        ;;
-        2)
-            cd $openenergymonitor_mod/Emoncms-Scripts/Emoncms
-            chmod +x init.sh && ./init.sh
-        ;;
-        3)  
-            cd $openenergymonitor_mod/Emoncms-Scripts/UPS_Pico
-            chmod +x init.sh && ./init.sh
-        ;;
-        4)
-            cd $openenergymonitor_mod/Emoncms-Scripts/Node-RED
-            chmod +x init.sh && ./init.sh
-        ;;
-        5)
             cd $openenergymonitor_mod/Emoncms-Scripts/USB_HDD
             chmod +x usb_hdd
             sudo ./usb_hdd -d /dev/sda
+        ;;
+        2)
+            cd $openenergymonitor_mod/Emoncms-Scripts/RFM69Pi
+            chmod +x init.sh && ./init.sh
+        ;;
+        3)
+            cd $openenergymonitor_mod/Emoncms-Scripts/Emoncms
+            chmod +x init.sh && ./init.sh
+        ;;
+        4)  
+            cd $openenergymonitor_mod/Emoncms-Scripts/UPS_Pico
+            chmod +x init.sh && ./init.sh
+        ;;
+        5)
+            cd $openenergymonitor_mod/Emoncms-Scripts/Node-RED
+            chmod +x init.sh && ./init.sh
         ;;
         6)
             cd $openenergymonitor_mod/Emoncms-Scripts/Pagekite
