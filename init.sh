@@ -26,8 +26,8 @@ rm init.sh
 
 while true; do      
   OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 8 \
-    "1" "Install HDD usb" \
-    "2" "Install RFM69Pi" \
+    "1" "Install HDD usb (reboot required)" \
+    "2" "Install RFM69Pi (reboot required)" \
     "3" "Install Emoncms" \
     "4" "Install UPSPico" \
     "5" "Install NodeRed" \
