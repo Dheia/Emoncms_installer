@@ -26,11 +26,11 @@ rm init.sh
 
 while true; do      
   OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 8 \
-    "1" "Install RFM69Pi" \
-    "2" "Install Emoncms" \
-    "3" "Install UPSPico" \
-    "4" "Install NodeRed" \
-    "5" "Install HDD usb" \
+    "1" "Install HDD usb" \
+    "2" "Install RFM69Pi" \
+    "3" "Install Emoncms" \
+    "4" "Install UPSPico" \
+    "5" "Install NodeRed" \
     "6" "Install PageKite" \
     "7" "Install Backup Module mod" \
     "8" "Enable SSH root access"  3>&1 1>&2 2>&3)
