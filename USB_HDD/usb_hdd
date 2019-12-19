@@ -153,4 +153,4 @@ info "boot config" "  /boot/cmdline.txt"
 info "boot config" "Your new root drive is currently accessible under /mnt."
 info "boot config" "In order to restart with this drive at /, please type:"
 info "boot config" "sudo reboot"
-
+sudo reboot
