@@ -10,8 +10,7 @@ while true; do
             echo "Raspberry serial port configuration              "
             echo "-------------------------------------------------"
             #Disable Bluetooh
-            echo "Installing minicom ..." 
-            sudo apt install minicom -y
+            
             [ $(grep -c "dtoverlay=pi3-disable-bt$" /boot/config.txt) -eq 0 ] && echo -e "\ndtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
             sudo systemctl disable hciuart
             #
@@ -64,6 +63,8 @@ while true; do
               echo "Invalid option"
              ;;
              esac
+             echo "Installing minicom ..." 
+             sudo apt install minicom -y
              read -p "Do you want to open minicom (y/n): " var
              if [ "$var" = "Y" ] || [ "$var" = "y" ]
              then
