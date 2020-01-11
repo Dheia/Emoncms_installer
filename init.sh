@@ -25,7 +25,7 @@ git checkout master
 rm init.sh
 
 while true; do      
-  OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 8 \
+  OPTION=$(whiptail --title "Install Menu Dialog" --menu "Choose your option" 15 60 9 \
     "1" "Install HDD usb (reboot required)" \
     "2" "Install RFM69Pi (reboot required)" \
     "3" "Install Emoncms" \
@@ -33,7 +33,8 @@ while true; do
     "5" "Install NodeRed" \
     "6" "Install PageKite" \
     "7" "Install Backup Module mod" \
-    "8" "Enable SSH root access"  3>&1 1>&2 2>&3)
+    "8" "Disable led Rpi & RFM69Pi" \
+    "9" "Enable SSH root access"  3>&1 1>&2 2>&3)
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
       case $OPTION in
@@ -67,6 +68,10 @@ while true; do
             chmod +x init.sh && ./init.sh
         ;;
         8)
+            cd $openenergymonitor_mod/Emoncms-Scripts/RPi_Dark_mode
+            chmod +x init.sh && ./init.sh
+        ;;
+        9)
             cd $openenergymonitor_mod/Emoncms-Scripts/SSH_rootaccess
             chmod +x init.sh && ./init.sh
         ;;
