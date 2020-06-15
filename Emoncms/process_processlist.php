@@ -810,7 +810,7 @@ class Process_ProcessList
                 "group"=>_("Calibration"),
                 "description"=>_("<p>Return the absolute value of the current value. This can be useful for calibrating a particular variable on the web rather than by reprogramming hardware.</p>")
            ),
-           array(
+           array( // added by jatg
             "name"=>_("Min monthly value"),
             "short"=>"min_month",
             "argtype"=>ProcessArg::FEEDID,
@@ -1605,7 +1605,8 @@ class Process_ProcessList
         $now->setTime(0,0);    // Today at 00:00
         return $now->format("U");
     }
-
+    
+    // Get the min value of the month Function added by jatg
     public function min_value_month($feedid, $time_now, $value)
     {
         // Get last values
@@ -1625,7 +1626,8 @@ class Process_ProcessList
         return $value;
 
     }
-
+    
+    // Get the start of the month Function added by jatg
     public function getstartmonth($time_now)
     {
         $now = DateTime::createFromFormat("U", (int)$time_now);
