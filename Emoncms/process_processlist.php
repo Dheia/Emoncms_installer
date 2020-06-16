@@ -5,6 +5,8 @@
  ---------------------------------------------------------------------
  Emoncms - open source energy visualisation
  Part of the OpenEnergyMonitor project: http://openenergymonitor.org
+ 
+Added min value monthtly process function by jatg
  */
 
 // no direct access
