@@ -1,3 +1,4 @@
+echo "hey"
 while true; do      
   OPTION=$(whiptail --title "Install RFM69Pi Menu Dialog" --menu "Choose your option" 15 60 3 \
     "1" "Raspberry serial port configuration (Reboot required)" \
