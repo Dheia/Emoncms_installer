@@ -25,4 +25,11 @@ sudo chmod +x  $openenergymonitor_dir/EmonScripts/install/emoncms_emonpi_modules
 
 cd $openenergymonitor_dir/EmonScripts/install
 ./main.sh
+
+read -p "Do you want to replace process_processlist.php modified version?(y/n): " var
+             if [ "$var" = "Y" ] || [ "$var" = "y" ]
+             then
+                minicom -b 38400 -D /dev/ttyAMA0
+             fi
+
 echo "Emoncms installed successfully..."
