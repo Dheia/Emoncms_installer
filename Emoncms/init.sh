@@ -27,9 +27,9 @@ cd $openenergymonitor_dir/EmonScripts/install
 ./main.sh
 
 read -p "Do you want to replace process_processlist.php modified version?(y/n): " var
-             if [ "$var" = "Y" ] || [ "$var" = "y" ]
+             if [ "$var" = "Y" ] || [ "$var" = "y" ] && [ -f $emoncms_www/Modules/process/process_processlist.php ]
              then
-                cp $openenergymonitor_mod/Emoncms-Scripts/Emoncms/process_processlist.php /var/www/emoncms/Modules/process/
+                cp -f $openenergymonitor_mod/Emoncms-Scripts/Emoncms/process_processlist.php $emoncms_www/Modules/process/process_processlist.php
              fi
 
 echo "Emoncms installed successfully..."
