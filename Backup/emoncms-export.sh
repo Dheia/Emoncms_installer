@@ -118,6 +118,20 @@ if [ $? -ne 0 ]; then
     rm -r $export_file/*
     exit 1
 fi
+
+echo "- Adding emoncms images files to: emoncms-backup-$date.tar"
+mkdir $export_file/temp/images
+cp $emoncms_www/images $export_file/temp/images
+tar -rf $bkp_tar -C $export_file/temp images 2>&1
+
+if [ $? -ne 0 ]; then
+    echo "Error: failed to tar emoncms images"
+    echo "emoncms export failed"
+    rm -r $export_file/*
+    exit 1
+fi
+
+
 sleep 1
 # Compress backup
 echo "- Compressing archive to gzip: emoncms-backup-$date.tar.gz"
