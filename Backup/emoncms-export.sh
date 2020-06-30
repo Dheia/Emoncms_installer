@@ -121,7 +121,7 @@ fi
 
 echo "- Adding emoncms images files to: emoncms-backup-$date.tar"
 mkdir $export_file/temp/images
-cp $emoncms_www/images $export_file/temp/images
+cp -r $emoncms_www/images $export_file/temp/images
 tar -rf $bkp_tar -C $export_file/temp images 2>&1
 
 if [ $? -ne 0 ]; then
