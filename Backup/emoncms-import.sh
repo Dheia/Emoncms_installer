@@ -118,6 +118,8 @@ sudo chmod 664 $emonhub_config_path/emonhub.conf
 echo "- Importing nodered flows"
 sudo mv $backup_location/import/nodered/flows_raspberrypi.json $nodered_path/flows_raspberrypi.json
 #mv $backup_location/import/nodered/flows_raspberrypi_cred.json $nodered_path/flows_raspberrypi_cred.json
+echo "- Importing emoncms images"
+mv $backup_location/import/images $emoncms_location/images
 echo "- Restarting emoncms_input service"
 sudo service emoncms_mqtt start
 echo "- Restarting nodered service"
