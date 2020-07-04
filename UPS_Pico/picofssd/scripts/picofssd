@@ -112,7 +112,7 @@ class fssd(Daemon):
 		Super-class overloaded run method.
 		"""
 
-		self.log.info("Started ;)")
+		self.log.error("Started ;)")
 
 		# register function to cleanup at exit
 		atexit.register(self.cleanup)
