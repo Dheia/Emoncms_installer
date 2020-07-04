@@ -17,7 +17,7 @@ class Daemon(object):
 	"""
 	def __init__(self, pidfile, stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 		self.log = logging.getLogger(__name__)
-		self.log.setLevel(logging.DEBUG)
+		self.log.setLevel(logging.INFO)
 		handler = logging.handlers.SysLogHandler(address = '/dev/log')
 		formatter = logging.Formatter('%(module)s[%(process)s]: <%(levelname)s>: %(message)s')
 		handler.setFormatter(formatter)
