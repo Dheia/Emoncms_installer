@@ -1750,7 +1750,6 @@ class Process_ProcessList
         $last_time = $last['time'];
         $feedtime = $this->getstartmonth($time_now);
         $time_check = $this->getstartmonth($last_time);
-        $this->log->error("feedtime: $feedtime - time_check: $time_check");
 
         // Runs on setup and midnight to reset current value - (otherwise db sets 0 as new min)
         if ($time_check != $feedtime) {
